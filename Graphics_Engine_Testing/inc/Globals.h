@@ -17,6 +17,6 @@ public:
 	static size_t get_type(Attribute attr);
 
 private:
-	inline static std::map<Attribute, size_t> m_sizes;
-	inline static std::map<Attribute, size_t> m_types;
+	static std::map<Attribute, size_t> m_sizes;
+	static std::map<Attribute, size_t> m_types;
 };
