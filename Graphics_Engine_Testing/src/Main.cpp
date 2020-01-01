@@ -27,11 +27,33 @@ int main(){
 	model[1][ATTR_UV] = vec2(0.f, 1.f);
 
 	// Read model data and print it out
-	for (int i = 0; i < 2; i++) {
+	std::cout << "Original model data:" << std::endl;
+	for (int i = 0; i < model.get_size(); i++) {
 		vec3 pos = model[i][ATTR_POS];
 		vec3 norm = model[i][ATTR_NORM];
 		vec2 uv = model[i][ATTR_UV];
 		std::cout << pos.x << ", "<< pos.y << ", " << pos.z << std::endl;
+		std::cout << norm.x << ", " << norm.y << ", " << norm.z << std::endl;
+		std::cout << uv.x << ", " << uv.y << std::endl;
+	}
+
+
+
+	// Create white-space between models
+	std::cout << std::endl << "Copy model data:" << std::endl;
+
+	// Assignment operator test
+	Model modelCpy = model;
+
+	// Show that the second model has its own unique memory block and not a shared one with the previous model object
+	model[0][ATTR_POS] = vec3(11.f, 22.f, 33.f);
+
+	// Read model copy data and print it out
+	for (int i = 0; i < modelCpy.get_size(); i++) {
+		vec3 pos = modelCpy[i][ATTR_POS];
+		vec3 norm = modelCpy[i][ATTR_NORM];
+		vec2 uv = modelCpy[i][ATTR_UV];
+		std::cout << pos.x << ", " << pos.y << ", " << pos.z << std::endl;
 		std::cout << norm.x << ", " << norm.y << ", " << norm.z << std::endl;
 		std::cout << uv.x << ", " << uv.y << std::endl;
 	}

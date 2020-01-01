@@ -15,16 +15,29 @@ class Model {
 public:
 	// Create a model and specify which attribute types define the model and how many vertices it must have
 	Model(const std::vector<Attribute>& attributes, uint vertCount);
+	// Copy constructor
+	Model(const Model &other);
 	// Frees model data on destruction
 	~Model();
+	// Assignment constructor
+	Model& operator = (const Model &other);
+	// Move constructor
+	Model& operator=(Model&& other);
 	// When accessing the model using the [] operator (which specifies what vertex you want to access), return an object holding the data of said vertex
 	Vertex operator[](size_t idx);
+	// Retrieve a void pointer to the start of the data. This can be used to copy the data over to another Model object, or to assign it to an OpenGL VBO
+	void* data();
+	// Retrieve the amount of vertices found in the model
+	size_t get_size();
+	// Retrieve a constant reference telling which vertex attributes can be found in the model's vertices
+	const std::vector<Attribute>& get_attributes();
 
 private:
-	char* m_data;
+	char* m_data = nullptr;
 	std::vector<Attribute> m_attributes;
 	std::map<Attribute, size_t> m_attrLocs;
 	size_t m_vertexSize;
+	size_t m_vertexCount;
 };
 
 class VertexElement;
