@@ -43,4 +43,4 @@ This library is heavily dependent on RTTR, and it requires a variable type's `ha
 
 This library makes use of C++14 functionality, so make sure that you compile with C++14 at a minimum.
 
-Due to the run-time nature of this library, performance will take a significant hit compared to compile-time alternatives. Some simple profiling on my machine yields up to 15x slower performance for some functionality compared to compile-time alternatives when the unsafe preprocessor hasn't been enabled. Therefore I recommend straying away from this library for final products, and to use it solely to allow for quick experimentation.
+Due to the run-time nature of this library, performance will take a significant hit compared to compile-time alternatives. Some simple profiling on my machine yields up to 3x slower performance for some functionality compared to compile-time alternatives when the unsafe preprocessor hasn't been enabled in release mode. Therefore I wouldn't recommend using this library for high-performance scenarios.
