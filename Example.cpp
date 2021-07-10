@@ -3,6 +3,15 @@
 #define FMC_IMPLEMENTATION
 #include "fmc.h"
 
+namespace fmc {
+	enum Attribute : size_t {
+		ATTR_POS,
+		ATTR_NORM,
+		ATTR_COL,
+		ATTR_UV
+	};
+}
+
 struct vec2 {
 	vec2(float tX, float tY) : x(tX), y(tY) {}
 	float x;
