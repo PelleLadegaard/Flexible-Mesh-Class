@@ -8,9 +8,6 @@ struct vec2 {
 	float x;
 	float y;
 };
-std::ostream& operator<<(std::ostream& os, const vec2& vector) {
-	return os << "x: " << vector.x << " y: " << vector.y;
-}
 
 struct vec3 {
 	vec3(float tX, float tY, float tZ) : x(tX), y(tY), z(tZ) {}
@@ -18,12 +15,10 @@ struct vec3 {
 	float y;
 	float z;
 };
-std::ostream& operator<<(std::ostream& os, const vec3& vector) {
-	return os << "x: " << vector.x << " y: " << vector.y << " z: " << vector.z;
-}
 
 int main() {
     // Define what data types are used for every vertex attribute type
+	fmc::AttributeInfo::initialize(fmc::ATTRIBUTE_COUNT);
     fmc::AttributeInfo::set_data<vec3>(fmc::ATTR_POS);
     fmc::AttributeInfo::set_data<vec3>(fmc::ATTR_NORM);
     fmc::AttributeInfo::set_data<vec3>(fmc::ATTR_COL);

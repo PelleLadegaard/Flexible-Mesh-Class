@@ -1,10 +1,8 @@
 #pragma once
 
-#include <map>
 #include <cassert>
 #include <typeinfo>
 #include <vector>
-#include <memory>
 
 namespace fmc {
 	// The available attribute types
@@ -12,13 +10,19 @@ namespace fmc {
 		ATTR_POS,
 		ATTR_NORM,
 		ATTR_COL,
-		ATTR_UV
+		ATTR_UV,
+
+		ATTRIBUTE_COUNT
 	};
 
 	// Global class that holds data type hash ID's and sizes, indexed by the vertex attribute enum
 	class AttributeInfo {
 	public:
 		// Store hash ID and size of given data type
+		static void initialize(size_t _attributeCount) {
+			get_sizes().resize(_attributeCount);
+			get_types().resize(_attributeCount);
+		}
 		template <class T> static void set_data(Attribute _attribute) {
 			get_sizes()[_attribute] = sizeof(T);
 			get_types()[_attribute] = typeid(T).hash_code();
@@ -26,12 +30,12 @@ namespace fmc {
 		static size_t get_size(Attribute _attribute) { return get_sizes()[_attribute]; }
 		static size_t get_type(Attribute _attribute) { return get_types()[_attribute]; }
 	private:
-		static std::map<Attribute, size_t>& get_sizes() {
-			static std::map<Attribute, size_t> m_sizes;
+		static std::vector<size_t>& get_sizes() {
+			static std::vector<size_t> m_sizes;
 			return m_sizes;
 		}
-		static std::map<Attribute, size_t>& get_types() {
-			static std::map<Attribute, size_t> m_types;
+		static std::vector<size_t>& get_types() {
+			static std::vector<size_t> m_types;
 			return m_types;
 		}
 	};
