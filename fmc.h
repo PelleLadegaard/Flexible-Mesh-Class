@@ -8,7 +8,12 @@
 
 namespace fmc {
 	// The available attribute types
-	enum Attribute : size_t;
+	enum Attribute {
+		ATTR_POS,
+		ATTR_NORM,
+		ATTR_COL,
+		ATTR_UV
+	};
 
 	// Global class that holds data type hash ID's and sizes, indexed by the vertex attribute enum
 	class AttributeInfo {
