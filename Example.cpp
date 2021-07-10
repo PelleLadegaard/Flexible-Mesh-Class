@@ -18,7 +18,7 @@ struct vec3 {
 
 int main() {
     // Define what data types are used for every vertex attribute type
-	fmc::AttributeInfo::initialize(fmc::ATTRIBUTE_COUNT);
+    fmc::AttributeInfo::initialize(fmc::ATTRIBUTE_COUNT);
     fmc::AttributeInfo::set_data<vec3>(fmc::ATTR_POS);
     fmc::AttributeInfo::set_data<vec3>(fmc::ATTR_NORM);
     fmc::AttributeInfo::set_data<vec3>(fmc::ATTR_COL);
